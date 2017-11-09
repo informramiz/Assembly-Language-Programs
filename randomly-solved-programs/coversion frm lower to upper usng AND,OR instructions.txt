@@ -1,0 +1,34 @@
+ .MODEL SMALL
+ .STACK 100H
+ .DATA
+	MSG DB		'ENTER CHARACTERS: $'
+	ARRAY DB 	0,0,0,0,0
+ .CODE
+ MAIN PROC
+	
+	MOV AX,@DATA
+	MOV DS,AX
+	
+	mov ah,1
+	int 21h
+	
+	AND AL,0DFH
+	
+	MOV AH,2
+	MOV DL,AL
+	INT 21H
+	
+	OR dL,20H
+	INT 21H 
+	
+	
+EXIT:
+
+	MOV AH,4CH
+	INT 21H	
+	
+ MAIN ENDP
+	END MAIN
+	
+	
+
